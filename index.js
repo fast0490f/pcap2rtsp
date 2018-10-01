@@ -84,11 +84,12 @@ function startStream(socket, info) {
       } else {
         const temp = store.udp[i].data.slice(settings.udp[settings.select]);
         // const temp1 = new Buffer.concat([temp.slice(0, 8), new Buffer('75e5e64b', 'hex'),temp.slice(12)]);
-        // console.log(temp);
         socket.send(temp, info.port, info.address);
+
+
         i++;
       }
-    }, 1000 / 200);
+    }, 1 || 1000 / 200);
   }, 1500);
 }
 
@@ -112,7 +113,7 @@ function start() {
           play = true;
         }
         // console.log(data.toString(), '\r\n');
-        console.log(store.headers[i], '\r\n');
+        // console.log(store.headers[i], '\r\n');
         socket.write(store.headers[i])
         i++;
       }
